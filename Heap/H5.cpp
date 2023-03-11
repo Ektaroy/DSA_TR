@@ -3,7 +3,7 @@
 #include<unordered_map>
 void topkfreq(vector<int>arr,int k)
 {
-    priority_queue<pair<int,int>> minh;
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> minh;
     unordered_map<int,int> m;
 
     for(int i=0;i<arr.size();i++)
@@ -13,7 +13,7 @@ void topkfreq(vector<int>arr,int k)
 
     for(auto i=m.begin();i!=m.end();i++)
     {
-        minh.push(m[i]->second,m[i]->first);
+        minh.push({i->second,i->first});
 
         if(minh.size()>k)
         minh.pop();
